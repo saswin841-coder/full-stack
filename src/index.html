@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Membership Form</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #e0e7ff;
+        }
+
+        .container {
+            width: 350px;
+            margin: 50px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Library Membership Form</h2>
+
+    <form>
+
+        <label>Member Name</label>
+        <input type="text" id="mname">
+
+        <label>Register Number</label>
+        <input type="text" id="reg">
+
+        <label>Email</label>
+        <input type="text" id="email">
+
+        <label>Phone Number</label>
+        <input type="text" id="phone">
+
+        <label>Department</label>
+        <select id="dept">
+            <option value="">Select Department</option>
+            <option>CSE</option>
+            <option>ECE</option>
+        </select>
+
+        <label>Membership Type</label>
+        <select id="type">
+            <option value="">Select Membership Type</option>
+            <option>Student</option>
+            <option>Faculty</option>
+        </select>
+
+        <button type="button" onclick="register()">Register</button>
+        <button type="reset">Reset</button>
+
+    </form>
+
+    <div id="message"></div>
+
+</div>
+
+<script>
+
+function register() {
+
+    let name = document.getElementById("mname").value;
+    let reg = document.getElementById("reg").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let dept = document.getElementById("dept").value;
+    let type = document.getElementById("type").value;
+
+    let message = document.getElementById("message");
+
+    if (name == "" || reg == "" || email == "" ||
+        phone == "" || dept == "" || type == "") {
+
+        message.innerHTML = "All fields are required";
+        message.style.color = "red";
+
+        return;
+    }
+
+
+    
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email)) {
+
+        message.innerHTML = "Enter a valid email";
+        message.style.color = "red";
+
+        return;
+    }
+
+
+    
+    let phonePattern = /^[0-9]{10}$/;
+
+    if (!phonePattern.test(phone)) {
+
+        message.innerHTML = "Enter a valid 10 digit phone number";
+        message.style.color = "red";
+
+        return;
+    }
+
+
+    
+    message.innerHTML = "Membership registered successfully!";
+    message.style.color = "green";
+
+}
+
+</script>
+
+</body>
+</html>
+
